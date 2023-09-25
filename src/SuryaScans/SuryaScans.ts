@@ -10,11 +10,11 @@ import {
     MangaStream
 } from '../MangaStream'
 
-const DOMAIN = 'https://xcalibrscans.com'
+const DOMAIN = 'https://suryascans.com'
 
-export const xCalibrScansInfo: SourceInfo = {
+export const SuryaScansInfo: SourceInfo = {
     version: getExportVersion('0.0.0'),
-    name: 'xCalibrScans',
+    name: 'SuryaScans',
     description: `Extension that pulls manga from ${DOMAIN}`,
     author: 'Netsky',
     authorWebsite: 'http://github.com/TheNetsky',
@@ -25,11 +25,12 @@ export const xCalibrScansInfo: SourceInfo = {
     sourceTags: []
 }
 
-export class xCalibrScans extends MangaStream {
+export class SuryaScans extends MangaStream {
 
     baseUrl: string = DOMAIN
 
     override configureSections() {
         this.homescreen_sections['new_titles'].enabled = false
+
     }
 }

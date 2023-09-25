@@ -1,5 +1,4 @@
 import {
-    BadgeColor,
     ContentRating,
     SourceInfo,
     SourceIntents
@@ -10,11 +9,11 @@ import {
     MangaStream
 } from '../MangaStream'
 
-const DOMAIN = 'https://xcalibrscans.com'
+const DOMAIN = 'https://nightscans.org'
 
-export const xCalibrScansInfo: SourceInfo = {
+export const NightScansInfo: SourceInfo = {
     version: getExportVersion('0.0.0'),
-    name: 'xCalibrScans',
+    name: 'NightScans',
     description: `Extension that pulls manga from ${DOMAIN}`,
     author: 'Netsky',
     authorWebsite: 'http://github.com/TheNetsky',
@@ -25,11 +24,12 @@ export const xCalibrScansInfo: SourceInfo = {
     sourceTags: []
 }
 
-export class xCalibrScans extends MangaStream {
+export class NightScans extends MangaStream {
 
     baseUrl: string = DOMAIN
 
     override configureSections() {
-        this.homescreen_sections['new_titles'].enabled = false
+        this.homescreen_sections['latest_update'].selectorFunc = ($: CheerioStatic) => $('div.bsx', $('h2:contains(Latest Update)')?.parent()?.next())
+        this.homescreen_sections['latest_update'].subtitleSelectorFunc = ($: CheerioStatic, element: CheerioElement) => $('a.maincl', element).first().text().trim()
     }
 }
