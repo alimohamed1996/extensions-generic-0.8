@@ -12,10 +12,10 @@ import {
 
 import { MangaLekParser } from './MangaLekParser'
 
-const DOMAIN = 'https://mangalek.com'
+const DOMAIN = 'https://mangaleku.com'
 
 export const MangaLekInfo: SourceInfo = {
-    version: getExportVersion('0.0.0'),
+    version: getExportVersion('0.0.1'),
     name: 'MangaLek',
     description: `Extension that pulls manga from ${DOMAIN}`,
     author: 'Netsky',
@@ -37,8 +37,6 @@ export class MangaLek extends Madara {
     baseUrl: string = DOMAIN
 
     override alternativeChapterAjaxEndpoint = true
-
-    override hasAdvancedSearchPage = true
 
     override bypassPage = `${DOMAIN}/?s=&post_type=wp-manga`
 

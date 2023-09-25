@@ -13,7 +13,7 @@ import {
 const DOMAIN = 'https://hiperdex.com'
 
 export const HiperDexInfo: SourceInfo = {
-    version: getExportVersion('0.0.2'),
+    version: getExportVersion('0.0.6'),
     name: 'HiperDex',
     description: `Extension that pulls manga from ${DOMAIN}`,
     author: 'Netsky',
@@ -35,6 +35,4 @@ export class HiperDex extends Madara {
     baseUrl: string = DOMAIN
 
     override alternativeChapterAjaxEndpoint = true
-
-    override hasAdvancedSearchPage = true
 }

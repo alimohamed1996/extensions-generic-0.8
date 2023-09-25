@@ -1,7 +1,7 @@
 import {
+    BadgeColor,
     ContentRating,
     SourceInfo,
-    BadgeColor,
     SourceIntents
 } from '@paperback/types'
 
@@ -10,26 +10,37 @@ import {
     Madara
 } from '../Madara'
 
-const DOMAIN = 'https://isekaiscan.com'
+import {
+    KnightNoScanlationParser
+} from './KnightNoScanlationParser'
 
-export const IsekaiScanInfo: SourceInfo = {
+const DOMAIN = 'https://knightnoscanlation.com'
+
+export const KnightNoScanlationInfo: SourceInfo = {
     version: getExportVersion('0.0.0'),
-    name: 'IsekaiScan',
+    name: 'KnightNoScanlation',
     description: `Extension that pulls manga from ${DOMAIN}`,
-    author: 'Netsky',
+    author: 'Netsky & Seitenca',
     authorWebsite: 'http://github.com/TheNetsky',
     icon: 'icon.png',
-    contentRating: ContentRating.EVERYONE,
+    contentRating: ContentRating.MATURE,
     websiteBaseURL: DOMAIN,
-    sourceTags: [],
+    sourceTags: [
+        {
+            text: 'Spanish',
+            type: BadgeColor.GREY
+        }
+    ],
     intents: SourceIntents.MANGA_CHAPTERS | SourceIntents.HOMEPAGE_SECTIONS | SourceIntents.CLOUDFLARE_BYPASS_REQUIRED | SourceIntents.SETTINGS_UI
 }
 
-export class IsekaiScan extends Madara {
+export class KnightNoScanlation extends Madara {
 
     baseUrl: string = DOMAIN
 
+    override language = '🇪🇸'
+
     override alternativeChapterAjaxEndpoint = true
 
-    override hasAdvancedSearchPage = true
+    override parser: KnightNoScanlationParser = new KnightNoScanlationParser()
 }

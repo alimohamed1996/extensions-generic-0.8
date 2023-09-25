@@ -1,7 +1,7 @@
 import {
     ContentRating,
-    SourceInfo,
     BadgeColor,
+    SourceInfo,
     SourceIntents
 } from '@paperback/types'
 
@@ -10,31 +10,33 @@ import {
     Madara
 } from '../Madara'
 
-const DOMAIN = 'https://hentai20.io'
+const DOMAIN = 'https://sinensisscans.com'
 
-export const Hentai20Info: SourceInfo = {
+export const SinensisInfo: SourceInfo = {
     version: getExportVersion('0.0.0'),
-    name: 'Hentai20',
+    name: 'Sinensis',
     description: `Extension that pulls manga from ${DOMAIN}`,
     author: 'Netsky',
     authorWebsite: 'http://github.com/TheNetsky',
     icon: 'icon.png',
-    contentRating: ContentRating.ADULT,
+    contentRating: ContentRating.MATURE,
     websiteBaseURL: DOMAIN,
     sourceTags: [
         {
-            text: '18+',
-            type: BadgeColor.YELLOW
+            text: 'Portuguese',
+            type: BadgeColor.GREY
         }
     ],
     intents: SourceIntents.MANGA_CHAPTERS | SourceIntents.HOMEPAGE_SECTIONS | SourceIntents.CLOUDFLARE_BYPASS_REQUIRED | SourceIntents.SETTINGS_UI
 }
 
-export class Hentai20 extends Madara {
+export class Sinensis extends Madara {
 
     baseUrl: string = DOMAIN
 
-    override alternativeChapterAjaxEndpoint = false
+    override language = '🇵🇹'
 
-    override hasAdvancedSearchPage = false
+    override alternativeChapterAjaxEndpoint = true
+
+    override hasProtectedChapters = true
 }
